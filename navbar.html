@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    
+<body>
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="OnTheWay.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <!-- <li><a href="#">หน้าแรก การจองรถ ติดตามสถานะ ดูประวัติการจองรถ ติดต่อ</a></li> -->
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+
+<style>
+
+    body{
+        background-color: white;
+        font-family: 'Kanit', serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .sticky-bar{
+        position: fixed; /* Fixed at the top */
+        top: 0;
+        width: 100%;
+        background-color: goldenrod; /* Blue background */
+        color: white;
+        display: flex;
+        justify-content: space-between; /* Align menu to the left, logo to the right */
+        align-items: center;
+        padding: 5px 20px; /* Adjust padding to fit content */
+        box-sizing: border-box; /* Include padding in width calculation */
+        z-index: 1000;
+        overflow: hidden;
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: bold;
+        white-space: nowrap;    /* Prevent text from wrapping */
+    }
+
+    .menu-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 50px;   /* ปรับขนาดความสูงของปุ่ม */
+        width: 50px;    /* ปรับขนาดความกว้างของปุ่ม */
+        border-radius: 50%;
+        gap: 4px;
+    }
+
+    .menu-button:hover{
+        background-color:#3b435f3b;
+    }
+
+    /* .menu-button:active{
+        background-color:#3b435f27;
+        transition: background-color 0.3s ease;
+    } */
+
+    .menu-button i {
+        display: block;
+        width: 75%;
+        height: 4px;    /* ความหนาของขีด */
+        background: #3b435f;
+        border-radius: 2px; /* ให้ขีดมีมุมโค้ง */
+    }
+
+    /* .menu-button:hover i{
+        background: red;
+    } */
+
+    /* .menu-button:active i{
+        background-color: #3b435f;
+        transform: scale(1.1);
+    } */
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* เริ่มต้นซ่อนเมนูไว้ */
+        width: 40%; /* ความกว้างของเมนู */
+        height: 100vh; /* สูงเต็มหน้าจอ */
+        background-color: #3b435f;
+        color: white;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        transition: right 0.3s ease; /* ทำให้เลื่อนแบบ smooth */
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    .menu.show {
+        right: 0; /* แสดงเมนู */
+    }
+
+    .menu ul{
+        list-style: none;
+        padding: 0;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column; /* ให้รายการอยู่ในแถวแนวตั้ง */
+    }
+
+    .menu ul li {
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box; /* รวม padding ในขนาดรายการ */
+    }
+
+    .menu ul li a {
+        display: block; /* ให้ลิงก์ขยายเต็มแถบ */
+        padding: 15px 10%; /* เพิ่มพื้นที่รอบๆ ข้อความ */
+        text-decoration: none; /* ลบขีดเส้นใต้ */
+        color: white; /* สีข้อความ */
+        width: 100%; /* ให้ลิงก์เต็มความกว้างของรายการ */
+        box-sizing: border-box;
+        transition: background-color 0.3s ease; /* การเปลี่ยนแปลงสีพื้นหลัง */
+    }
+
+    .menu ul li a:hover{
+        background-color: #2c3146; /* สีที่เปลี่ยนเมื่อเอานิ้วหรือเมาส์ไปวาง */
+    }
+
+    .menu-footer{
+        position: fixed;
+        bottom: 0; /* ชิดล่าง */
+        width: 40%; /* เต็มความกว้าง */
+        background-color: #2c3146; /* สีพื้นหลัง */
+        box-sizing: border-box;
+        display: flex;
+        align-items: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px 2.5%;
+    }
+
+    .login-btn {
+        font-family: 'Kanit', serif;
+        color: white;
+        transition: background-color 0.3s ease;
+        
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* .login-btn:hover {
+        background-color: #e68900;
+    } */
+
+    .account-icon{
+        background-color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        /* border: 2px solid white; */
+        flex-shrink: 0;
+    }
+</style>
+
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+
+    menuButton.addEventListener('click', function (event) {
+        // ป้องกันการทำให้ event propagates ไปยัง window
+        event.stopPropagation();
+        // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+        menu.classList.toggle('show');
+    });
+
+    // กดที่อื่นนอกเมนูแล้วซ่อน
+    window.addEventListener('click', function (event) {
+        if (!menu.contains(event.target) && event.target !== menuButton) {
+            menu.classList.remove('show');
+        }
+    });
+
+    
+</script>

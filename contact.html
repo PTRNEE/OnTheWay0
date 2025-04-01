@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="contact.css">
+
+</head>
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <h2>ติดต่อ</h2>
+        <div class="contact-info">
+            <p>บริษัท ออนเดอะเวย์ เอ็กซ์เพลส
+            <br>3 ถ. ลอยฟ้า แขวงวังทองหลาง เขตลาดพร้าว กรุงเทพฯ 10520<br></p>
+            
+            <p>OnTheWayExpress@gmail.com
+            <br>02-123-4567
+            <br>จันทร์ - ศุกร์ (09:00 - 17:00 น.)</p>
+        </div>
+        <hr>
+        <div class="social-media">
+            <p>Social media</p>
+            <div class="icons">
+                <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook"></a>
+                <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/768px-Instagram_icon.png" alt="Instagram"></a>
+                <a href="#" target="_blank"><img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg" alt="Twitter"></a>
+                <a href="#" target="_blank"><img src="https://static-00.iconduck.com/assets.00/tik-tok-icon-2048x2048-mmnsrcbe.png" alt="TikTok"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+        
+    </script>
+    
+</body>
+</html>

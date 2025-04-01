@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="detail.css">
+
+</head>
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="order-status-container">
+        <div class="order-title">คำสั่งซื้อ #000001</div>
+        <div class="order-number">สั่งซื้อเมื่อ 15 พฤศจิกายน 2023</div>
+
+        <div class="timeline">
+            <div class="timeline-step">
+                <div class="circle">1</div>
+                <span>สร้างรายการสั่งซื้อ</span>
+            </div>
+            <div class="timeline-step">
+                <div class="circle">2</div>
+                <span>เข้ารับพัสดุ</span>
+            </div>
+            <div class="timeline-step">
+                <div class="circle">3</div>
+                <span>อยู่ระหว่างการจัดส่ง</span>
+            </div>
+            <div class="timeline-step">
+                <div class="circle">4</div>
+                <span>จัดส่งสำเร็จ</span>
+            </div>
+            <div class="timeline-step active">
+                <div class="circle">5</div>
+                <span>เสร็จสิ้น</span>
+            </div>
+        </div>
+
+        <div class="order-details">
+            <p><span>วันที่:</span> 08/10/2024</p>
+            <p><span>สถานะการชำระเงิน:</span> ชำระเงินแล้ว</p>
+            <p><span>สถานะการขนส่ง:</span> เสร็จสิ้น</p>
+            <p><span>ทั้งหมด:</span> 4,800.00฿</p>
+
+            <div class="line"></div>
+
+            <p><span>ต้นทาง:</span> (ต้นทางต้นทางต้นทางต้นทางต้นทางต้นทางต้นทางต้นทางต้นทางต้นทาง)</p>
+            <p><span>ปลายทาง:</span> (ปลายทางปลายทางปลายทางปลายทางปลายทางปลายทางปลายทางปลายทางปลายทางปลายทาง)</p>
+            <p><span>รูปแบบการบริการ:</span> (รูปแบบการบริการ)</p>
+            <p><span>ประเภทรถขนส่ง:</span> (ประเภทรถขนส่ง)</p>
+            <p><span>รูปแบบการจัดส่ง:</span> (รูปแบบการจัดส่ง)</p>
+            <p><span>รูปแบบการชำระเงิน:</span> (รูปแบบการชำระเงิน)</p>
+        </div>
+
+    <script>
+        
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+        
+    </script>
+    
+</body>
+</html>

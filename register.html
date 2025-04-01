@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="register.css">
+
+</head>
+
+<!-- color
+ #f4f4f6    เทาอ่อน
+ #3b435f    เทาเข้ม
+ #2c3146    เทาเข้มกว่า
+ #f5ba53    เหลืองเข้ม
+ #fce8bc    เหลืองอ่อน
+ #fef7e4    เหลืองอ่อนอ่อน
+ #d13123    แดงส้ม
+ #bd651d    น้ำตาล
+  -->
+
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <!-- <li><a href="#">หน้าแรก การจองรถ ติดตามสถานะ ดูประวัติการจองรถ ติดต่อ</a></li> -->
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="register-container">
+        <h1>สร้างบัญชีผู้ใช้</h1>
+        <form>
+            <div class="form-group">
+                <label>Firstname</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Lastname</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="account@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="********" required>
+            </div>
+            <button type="submit" class="register-btn">
+                <a href="service.html">ลงทะเบียน</a>
+            </button>
+        </form>
+    </div>
+    
+    <script>
+        
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+
+    </script>
+     
+</body>
+</html>

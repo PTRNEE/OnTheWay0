@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="service.css">
+
+</head>
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>เลือกบริการขนส่ง</h2>
+        <form action="payment.html" method="GET">
+            <div class="box">
+                <h3>จุดรับ-ส่งพัสดุ</h3>
+                <span>ระบุจุดรับ-ส่งพัสดุ</span>
+                <label for="pickup">จุดรับพัสดุ:</label>
+                <input type="text" id="pickup" name="pickup" required>
+                
+                <label for="delivery">จุดส่งพัสดุ:</label>
+                <input type="text" id="delivery" name="delivery" required>
+            </div>
+            
+            <div class="box">
+                <h3>รายละเอียดบริการ</h3>
+                <span>ระบุบริการที่ต้องการ</span>
+                <label for="serviceType">รูปแบบการบริการ:</label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="default">ยังไม่ระบุ</option>
+                    <option value="standard">มาตรฐาน</option>
+                    <option value="express">ด่วนพิเศษ</option>
+                </select>
+                
+                <label for="vehicleType">ประเภทรถขนส่ง:</label>
+                <select id="vehicleType" name="vehicleType" required>
+                    <option value="default">ยังไม่ระบุ</option>
+                    <option value="bike">มอเตอร์ไซค์</option>
+                    <option value="car">รถยนต์</option>
+                    <option value="truck">รถบรรทุก</option>
+                </select>
+                
+                <label for="deliveryType">รูปแบบการจัดส่ง:</label>
+                <select id="deliveryType" name="deliveryType" required>
+                    <option value="default">ยังไม่ระบุ</option>
+                    <option value="doorToDoor">รับถึงที่ ส่งถึงที่</option>
+                    <option value="dropOff">นำส่งที่จุดบริการ</option>
+                </select>
+                
+                <!-- <label for="totalCost">ค่าบริการทั้งหมด:</label>
+                <input type="text" id="totalCost" name="totalCost" value="0" readonly> -->
+            </div>
+
+            <div class="box">
+                <h3>ค่าบริการทั้งหมด: 0฿</h3>
+            </div>
+            
+            <button class="submit">
+                <a href="payment.html">ดำเนินการต่อ</a>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        const submitButton = document.querySelector('.submit'); // ปุ่มดำเนินการต่อ
+        const serviceType = document.getElementById('serviceType');
+        const vehicleType = document.getElementById('vehicleType');
+        const deliveryType = document.getElementById('deliveryType');
+        const pickup = document.getElementById('pickup');
+        const delivery = document.getElementById('delivery');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // ตรวจสอบว่ามีการเลือกค่าหรือไม่ก่อนกดปุ่มดำเนินการต่อ
+        submitButton.addEventListener('click', function (event) {
+            if (
+                pickup.value.trim() === "" || 
+                delivery.value.trim() === "" || 
+                serviceType.value === "default" || 
+                vehicleType.value === "default" || 
+                deliveryType.value === "default"
+            ) {
+                alert("กรุณาเลือกข้อมูลให้ครบถ้วนก่อนดำเนินการต่อ");
+                event.preventDefault(); // ป้องกันการเปลี่ยนหน้า
+            } else {
+                window.location.href = "payment.html"; // ไปยังหน้า payment.html ถ้ากรอกครบ
+            }
+        });
+            
+    </script>
+    
+</body>
+</html>

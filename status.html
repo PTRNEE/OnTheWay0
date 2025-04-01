@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="status.css">
+    <!-- <script src="script.js"></script> -->
+
+</head>
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="status-container">
+        <h1>ติดตามสถานะ</h1>
+        <div class="status-card">
+            <div class="status-id">
+                <a href="detail.html">
+                    <button class="id-box">
+                        #001028
+                    </button>
+                </a>
+            </div>
+            <div class="status-info">
+                <p><strong>วันที่:</strong> 08/10/2024</p>
+                <p><strong>สถานะการชำระเงิน:</strong> ชำระเงินแล้ว</p>
+                <p><strong>สถานะการขนส่ง:</strong> อยู่ระหว่างการจัดส่ง</p>
+                <p><strong>ทั้งหมด:</strong> 2,000.00฿</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- <button onclick="logout()">Logout</button> -->
+
+    <script>
+        
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // LogOut
+        // function logout() {
+        //     localStorage.removeItem('isLoggedIn');
+        //     alert('You have been logged out!');
+        //     window.location.href = 'login.html';
+        // }
+        
+    </script>
+    
+</body>
+</html>

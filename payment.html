@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="payment.css">
+
+</head>
+<body>
+
+    <div class="sticky-bar">
+        <div class="logo">
+            OnTheWay Express
+        </div>
+        <button class="menu-button" id="menuButton">
+            <i></i>
+            <i></i>
+            <i></i>
+        </button>
+    </div>
+    
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="index.html"><br>Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="status.html">Status</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    
+        <div class="menu-footer">
+            <a href="login.html">
+                <button class="login-btn">
+                    <span>Login</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2815/2815428.png" alt="Account Icon" class="account-icon"/>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>การชำระเงิน</h2>
+        <p class="subtitle">เลือกรูปแบบการชำระเงิน</p>
+
+        <div class="payment-options">
+            <div class="payment-box">
+                <h3>ชำระเงินทันที</h3>
+                <label>
+                    <input type="radio" name="paymentMethod" value="bankTransfer">
+                    โอนผ่านธนาคาร
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="qrCodeNow">
+                    QR Code
+                </label>
+            </div>
+
+            <div class="payment-box">
+                <h3>ชำระเงินปลายทาง</h3>
+                <label>
+                    <input type="radio" name="paymentMethod" value="cash">
+                    เงินสด
+                </label>
+                <label>
+                    <input type="radio" name="paymentMethod" value="qrCodeLater">
+                    QR Code
+                </label>
+            </div>
+        </div>
+
+        <div class="total-cost">
+            <p>ค่าบริการทั้งหมด: <span id="totalCost">0.00฿</span></p>
+        </div>
+
+        <button class="continue-btn">
+            <a href="status.html">ดำเนินการต่อ</a>
+        </button>
+
+    </div>
+
+    <script>
+
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+
+        menuButton.addEventListener('click', function (event) {
+            // ป้องกันการทำให้ event propagates ไปยัง window
+            event.stopPropagation();
+            // Toggle class 'show' เพื่อแสดงหรือซ่อนเมนู
+            menu.classList.toggle('show');
+        });
+
+        // กดที่อื่นนอกเมนูแล้วซ่อน
+        window.addEventListener('click', function (event) {
+            if (!menu.contains(event.target) && event.target !== menuButton) {
+                menu.classList.remove('show');
+            }
+        });
+
+        const continueButton = document.querySelector('.continue-btn');
+        const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
+    
+        // ฟังก์ชันตรวจสอบการเลือกวิธีการชำระเงิน
+        function checkPaymentSelection() {
+            let isSelected = false;
+    
+            // เช็คว่ามีการเลือก payment method หรือไม่
+            paymentOptions.forEach(option => {
+                if (option.checked) {
+                    isSelected = true;
+                }
+            });
+    
+            // ถ้าไม่ได้เลือกวิธีการชำระเงินให้แสดงเตือน
+            if (!isSelected) {
+                alert("กรุณาเลือกวิธีการชำระเงินก่อนดำเนินการต่อ");
+            } else {
+                window.location.href = "status.html"; // เปลี่ยนไปหน้าอื่นที่ต้องการ
+            }
+        }
+    
+        // เพิ่ม event listener ให้ปุ่มดำเนินการต่อ
+        continueButton.addEventListener('click', checkPaymentSelection);
+    </script>
+    
+    
+</body>
+</html>
